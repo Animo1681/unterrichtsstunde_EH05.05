@@ -46,11 +46,19 @@
     <main class="max-w-6xl mx-auto px-6 py-12 space-y-12">
 
         <!-- 1. EINFÜHRUNG -->
-        <section id="einfuehrung" class="bg-white rounded-3xl shadow-sm border border-[#dce3e0] p-8">
-            <h2 class="text-2xl font-bold text-[#032e23] mb-4">Das girocard-System in Deutschland</h2>
-            <p class="text-base text-[#4a5c56] leading-relaxed">
-                Seit 2007 hat die girocard die alte "EC-Karte" offiziell abgelöst. Sie basiert auf dem Debit-Prinzip: Zahlungen werden zeitnah vom verknüpften Girokonto abgebucht. Für den Handel ist entscheidend, wie diese Abbuchung am Point of Sale (POS) technisch und rechtlich legitimiert wird. Je nach Konfiguration des Terminals kommen zwei grundlegende Verfahren zum Einsatz, die erhebliche Auswirkungen auf Zahlungssicherheit und Kostenstruktur haben.
-            </p>
+        <!-- 1. EINFÜHRUNG MIT BILD -->
+        <section id="einfuehrung" class="bg-white rounded-3xl shadow-sm border border-[#dce3e0] p-8 flex flex-col md:flex-row gap-8 items-center">
+            <div class="md:w-2/3">
+                <h2 class="text-2xl font-bold text-[#032e23] mb-4">Das girocard-System in Deutschland</h2>
+                <p class="text-base text-[#4a5c56] leading-relaxed">
+                    Seit 2007 hat die girocard die alte "EC-Karte" offiziell abgelöst. Sie basiert auf dem Debit-Prinzip: Zahlungen werden zeitnah vom verknüpften Girokonto abgebucht. Für den Handel ist entscheidend, wie diese Abbuchung am Point of Sale (POS) technisch und rechtlich legitimiert wird. Je nach Konfiguration des Terminals kommen zwei grundlegende Verfahren zum Einsatz, die erhebliche Auswirkungen auf Zahlungssicherheit und Kostenstruktur haben.
+                </p>
+            </div>
+
+            <!-- BILD DER KARTE (Zieht sich automatisch aus dem Web) -->
+            <div class="md:w-1/3 flex justify-center items-center">
+                <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Symbolbild Bankkarte" class="rounded-xl shadow-lg border border-gray-200 max-w-full h-auto transform rotate-[-3deg] hover:rotate-0 transition-transform duration-300">
+            </div>
         </section>
 
         <!-- 2. VERFAHRENS-DETAILS (COLLAPSIBLE) -->
