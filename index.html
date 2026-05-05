@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Händler-Portal: girocard-Systeme am POS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container { height: 400px; }
+        }
+        /* Custom styling for details/summary to make it look clean */
+        summary::-webkit-details-marker { display: none; }
+        summary { list-style: none; }
+    </style>
+</head>
+<body class="bg-[#f2f5f4] text-[#032e23] antialiased leading-relaxed">
+
+    <!-- HEADER (Dark Forest Green) -->
+    <header class="bg-[#032e23] text-white py-12 shadow-xl border-b-[6px] border-[#1ed79d]">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="inline-block px-3 py-1 mb-4 rounded-full bg-[#114b3d] text-[#1ed79d] text-xs font-bold tracking-widest uppercase">
+                Merchant Info-Portal
+            </div>
+            <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-white">
+                girocard-Systeme am <span class="text-[#1ed79d]">POS</span>
+            </h1>
+            <p class="text-lg text-[#95a8a1] max-w-3xl font-light">
+                Zahlungsabwicklung, Risikomanagement und Gebührenstrukturen für den stationären Einzelhandel.
+            </p>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-6 py-12 space-y-12">
+
+        <!-- 1. EINFÜHRUNG MIT BILD -->
+        <section id="einfuehrung" class="bg-white rounded-3xl shadow-sm border border-[#dce3e0] p-8 flex flex-col md:flex-row gap-8 items-center">
+            <div class="md:w-2/3">
+                <h2 class="text-2xl font-bold text-[#032e23] mb-4">Das girocard-System in Deutschland</h2>
+                <p class="text-base text-[#4a5c56] leading-relaxed">
+                    Seit 2007 hat die girocard die alte "EC-Karte" offiziell abgelöst. Sie basiert auf dem Debit-Prinzip: Zahlungen werden zeitnah vom verknüpften Girokonto abgebucht. Für den Handel ist entscheidend, wie diese Abbuchung am Point of Sale (POS) technisch und rechtlich legitimiert wird. Je nach Konfiguration des Terminals kommen zwei grundlegende Verfahren zum Einsatz, die erhebliche Auswirkungen auf Zahlungssicherheit und Kostenstruktur haben.
+                </p>
+            </div>
+
+            <!-- BILD DER KARTE (Zieht sich automatisch aus dem Web) -->
+            <div class="md:w-1/3 flex justify-center items-center">
+                <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Symbolbild Bankkarte" class="rounded-xl shadow-lg border border-gray-200 max-w-full h-auto transform rotate-[-3deg] hover:rotate-0 transition-transform duration-300">
+            </div>
+        </section>
+
+        <!-- 2. VERFAHRENS-DETAILS (COLLAPSIBLE) -->
+        <section class="space-y-4">
+            <h2 class="text-xl font-bold text-[#032e23] ml-2">Detaillierte Verfahrensübersicht</h2>
+
+            <!-- PIN Text -->
+            <details class="group bg-white rounded-2xl shadow-sm border border-[#dce3e0] overflow-hidden cursor-pointer">
+                <summary class="flex justify-between items-center p-6 text-lg font-bold text-[#032e23] hover:bg-[#f8fafa] transition-colors">
+                    <div class="flex items-center gap-3">
+                        <span class="text-[#1ed79d] font-black group-open:rotate-90 transition-transform duration-300">▶</span>
+                        Das PIN-Verfahren (girocard PIN / Electronic Cash)
+                    </div>
+                    <span class="text-xs font-normal text-[#6b8279] uppercase tracking-widest border border-[#dce3e0] px-3 py-1 rounded-full">Details</span>
+                </summary>
+                <div class="p-8 border-t border-[#dce3e0] bg-[#fcfdfd]">
+                    <p class="text-sm leading-loose text-[#3a4d46] text-justify">
+                        Das PIN-Verfahren zeichnet sich durch einen hochsicheren und schnellen technischen Ablauf aus. Nach dem Einstecken oder kontaktlosen Auflegen der Karte erfolgt die Eingabe der persönlichen Geheimzahl. Das System führt daraufhin eine direkte Online-Autorisierung bei der kartenausgebenden Bank durch. Diese sofortige, digitale Prüfung von Kontodeckung und Sperrstatus bietet dem Händler den massiven Vorteil einer absoluten Zahlungsgarantie. Rücklastschriften wegen mangelnder Deckung sind hierbei komplett ausgeschlossen, was die Planungssicherheit für das Unternehmen enorm erhöht. Zudem schätzen Kunden dieses Verfahren oftmals, da der Betrag sofort auf dem Konto geblockt wird und sie einen besseren Überblick über ihre Finanzen behalten. Dieser weitreichende Schutz ist jedoch mit Nachteilen verbunden: Es fallen für den Händler deutlich höhere Transaktionsgebühren an, die sich aus einem festen Cent-Betrag für die Netzbereitstellung sowie einem prozentualen Anteil (häufig um die 0,2 %) des Umsatzes zusammensetzen. Außerdem ist das Geschäft zwingend auf den Einsatz von teurerer Hardware mit sicheren PIN-Pads angewiesen.
+                    </p>
+                </div>
+            </details>
+
+            <!-- ELV Text -->
+            <details class="group bg-white rounded-2xl shadow-sm border border-[#dce3e0] overflow-hidden cursor-pointer">
+                <summary class="flex justify-between items-center p-6 text-lg font-bold text-[#032e23] hover:bg-[#f8fafa] transition-colors">
+                    <div class="flex items-center gap-3">
+                        <span class="text-[#1ed79d] font-black group-open:rotate-90 transition-transform duration-300">▶</span>
+                        Das ELV-Verfahren (Elektronisches Lastschriftverfahren)
+                    </div>
+                    <span class="text-xs font-normal text-[#6b8279] uppercase tracking-widest border border-[#dce3e0] px-3 py-1 rounded-full">Details</span>
+                </summary>
+                <div class="p-8 border-t border-[#dce3e0] bg-[#fcfdfd]">
+                    <p class="text-sm leading-loose text-[#3a4d46] text-justify">
+                        Das Elektronische Lastschriftverfahren, kurz ELV, ist ein traditionsreiches und in Deutschland sehr weit verbreitetes System, das rechtlich auf der Unterschrift des Kunden basiert. Nach dem Einlesen der Karte druckt das Terminal einen speziellen Händlerbeleg aus, der unterschrieben fortan als physisches SEPA-Lastschriftmandat fungiert. Der größte Vorteil für den Einzelhändler liegt in den extrem niedrigen, rein fixen Kosten im Cent-Bereich, was insbesondere bei sehr kleinen Beträgen die Gewinnmarge schont. Ein weiterer Pluspunkt ist die Flexibilität: Theoretisch gibt es bei Lastschriften keine festen Kartenlimits, was das System für unvorhergesehene Anschaffungen attraktiv macht. Die Nachteile sind jedoch gravierend, allen voran die gänzlich fehlende Zahlungsgarantie. Da keine direkte Online-Prüfung des tatsächlichen Kontostands erfolgt, besteht ein permanentes Ausfallrisiko. Lastschriften können platzen, wenn das Konto nicht gedeckt ist, oder vom Kunden sogar innerhalb von acht Wochen ohne Angabe von Gründen widerrufen werden. Dies verursacht nicht nur den Verlust der Wareneinnahme, sondern auch teure Stornogebühren für den Händler, der dem geschuldeten Geld im Anschluss mit hohem Aufwand hinterherlaufen muss.
+                    </p>
+                </div>
+            </details>
+        </section>
+
+        <!-- 3. VERGLEICH CHART -->
+        <section id="vergleich" class="bg-white rounded-3xl shadow-sm border border-[#dce3e0] p-8 mt-12">
+            <h2 class="text-2xl font-bold text-[#032e23] mb-8">Systemvergleich: Sicherheit vs. Kosten</h2>
+            <div class="chart-container">
+                <canvas id="comparisonChart"></canvas>
+            </div>
+        </section>
+
+        <!-- 4. SIMULATOR (COLLAPSIBLE / ACCORDION) -->
+        <section id="simulator">
+            <details class="group bg-[#032e23] rounded-3xl shadow-xl overflow-hidden cursor-pointer">
+                <summary class="flex justify-between items-center p-8 text-xl font-bold text-white hover:bg-[#043b2d] transition-colors">
+                    <div class="flex items-center gap-3">
+                        <span class="text-[#1ed79d] group-open:rotate-90 transition-transform duration-300">▶</span>
+                        Kaufmännisches Praxis-Tool: Gebühren-Simulator
+                    </div>
+                </summary>
+
+                <div class="p-8 border-t border-[#114b3d] bg-[#022119]">
+                    <p class="text-[#95a8a1] text-sm mb-8">
+                        Geben Sie einen Transaktionswert ein, um die kaufmännischen Auswirkungen und das Händlerrisiko zu simulieren.
+                    </p>
+
+                    <div class="flex flex-col md:flex-row gap-6 items-center bg-[#032e23] p-6 rounded-xl border border-[#114b3d] mb-8">
+                        <label for="basketAmount" class="text-lg font-bold text-white w-full md:w-auto">Transaktionswert (€):</label>
+                        <input type="number" id="basketAmount" value="15" min="1" step="0.01" class="text-xl font-bold text-[#032e23] bg-white border-2 border-[#1ed79d] px-4 py-3 rounded-lg w-full md:w-48 text-center focus:ring-4 focus:ring-[#1ed79d] outline-none transition-all">
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <!-- PIN Box -->
+                        <div id="simPin" class="bg-white p-6 rounded-xl border-4 transition-colors duration-300">
+                            <div class="flex justify-between items-center mb-4">
+                                <h3 class="text-xl font-bold text-[#032e23]">🔒 PIN-Verfahren</h3>
+                                <span id="pinRecStatus" class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Status</span>
+                            </div>
+                            <div class="space-y-4 text-sm">
+                                <div class="flex justify-between border-b border-gray-200 pb-2">
+                                    <span class="text-[#4a5c56]">Zahlungsgarantie:</span>
+                                    <span class="font-bold text-[#1ed79d]">Gegeben</span>
+                                </div>
+                                <div class="flex justify-between border-b border-gray-200 pb-2">
+                                    <span class="text-[#4a5c56]">Ausfallrisiko Händler:</span>
+                                    <span class="font-bold text-[#032e23]">0,00 €</span>
+                                </div>
+                                <div class="flex justify-between items-end pt-2">
+                                    <span class="text-[#4a5c56]">Kalkulierte Gebühren:</span>
+                                    <div class="text-right">
+                                        <span id="pinFee" class="text-xl font-black text-[#032e23]">0,00 €</span>
+                                        <div class="text-[10px] text-[#6b8279]">0,05€ Fix + 0,2%</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ELV Box -->
+                        <div id="simElv" class="bg-white p-6 rounded-xl border-4 transition-colors duration-300">
+                            <div class="flex justify-between items-center mb-4">
+                                <h3 class="text-xl font-bold text-[#032e23]">✍️ ELV (Unterschrift)</h3>
+                                <span id="elvRecStatus" class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Status</span>
+                            </div>
+                            <div class="space-y-4 text-sm">
+                                <div class="flex justify-between border-b border-gray-200 pb-2">
+                                    <span class="text-[#4a5c56]">Zahlungsgarantie:</span>
+                                    <span class="font-bold text-[#6b8279]">Nicht gegeben</span>
+                                </div>
+                                <div class="flex justify-between border-b border-gray-200 pb-2">
+                                    <span class="text-[#4a5c56]">Ausfallrisiko Händler:</span>
+                                    <span id="elvRisk" class="font-bold text-[#032e23]">0,00 €</span>
+                                </div>
+                                <div class="flex justify-between items-end pt-2">
+                                    <span class="text-[#4a5c56]">Kalkulierte Gebühren:</span>
+                                    <div class="text-right">
+                                        <span id="elvFee" class="text-xl font-black text-[#032e23]">0,05 €</span>
+                                        <div class="text-[10px] text-[#6b8279]">Nur Fixkosten</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </details>
+        </section>
+
+        <!-- 5. DEZENTES GLOSSAR -->
+        <section id="glossar" class="border-t border-[#dce3e0] pt-8 mt-16">
+            <p class="text-xs font-bold text-[#6b8279] uppercase tracking-widest mb-4">Rechtliche & Technische Definitionen</p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 text-sm">
+                <div>
+                    <h5 class="font-bold text-[#032e23] mb-1">Valuta</h5>
+                    <p class="text-xs text-[#4a5c56]">Rechtliche Wertstellung auf dem Konto. Kann vom Buchungstag abweichen.</p>
+                </div>
+                <div>
+                    <h5 class="font-bold text-[#032e23] mb-1">Point of Sale (POS)</h5>
+                    <p class="text-xs text-[#4a5c56]">Der Verkaufsort bzw. der Kassenplatz, an dem das Kartenterminal steht.</p>
+                </div>
+                <div>
+                    <h5 class="font-bold text-[#032e23] mb-1">Händlerbeleg</h5>
+                    <p class="text-xs text-[#4a5c56]">Dient beim ELV als physisches, unterschriebenes Lastschriftmandat und Beweisurkunde.</p>
+                </div>
+                <div>
+                    <h5 class="font-bold text-[#032e23] mb-1">Rücklastschrift</h5>
+                    <p class="text-xs text-[#4a5c56]">Rückbuchung beim ELV mangels Kontodeckung. Verursacht erhebliche Stornogebühren.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // --- CHARTS INITIALIZATION ---
+        Chart.defaults.color = '#6b8279';
+        Chart.defaults.font.family = 'Inter';
+
+        const ctxComp = document.getElementById('comparisonChart').getContext('2d');
+        new Chart(ctxComp, {
+            type: 'bar',
+            data: {
+                labels: ['Zahlungsgarantie', 'Schutz vor Rücklastschrift', 'Kosten-Effizienz (Händler)'],
+                datasets: [
+                    {
+                        label: 'PIN-Verfahren',
+                        data: [10, 10, 3],
+                        backgroundColor: '#032e23', // Dark Green
+                        borderRadius: 4
+                    },
+                    {
+                        label: 'ELV (Unterschrift)',
+                        data: [1, 2, 9],
+                        backgroundColor: '#1ed79d', // Mint/Teal
+                        borderRadius: 4
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'top', labels: { color: '#032e23', font: { weight: 'bold' } } },
+                    tooltip: {
+                        backgroundColor: '#032e23',
+                        titleColor: '#ffffff',
+                        bodyColor: '#1ed79d',
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) label += ': ';
+                                if (context.raw === 10) label += 'Maximal (10/10)';
+                                else if (context.raw >= 8) label += 'Sehr hoch';
+                                else if (context.raw >= 3) label += 'Gering';
+                                else label += 'Kein Schutz (1/10)';
+                                return label;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: { beginAtZero: true, max: 10, ticks: { display: false }, grid: { color: '#e5e7eb', drawBorder: false } },
+                    x: { grid: { display: false }, ticks: { color: '#032e23', font: { weight: '600' } } }
+                }
+            }
+        });
+
+        // --- SIMULATOR LOGIC ---
+        const inputAmount = document.getElementById('basketAmount');
+        const pinFeeDisplay = document.getElementById('pinFee');
+        const elvFeeDisplay = document.getElementById('elvFee');
+        const elvRiskDisplay = document.getElementById('elvRisk');
+        const simPinBox = document.getElementById('simPin');
+        const simElvBox = document.getElementById('simElv');
+        const pinRecStatus = document.getElementById('pinRecStatus');
+        const elvRecStatus = document.getElementById('elvRecStatus');
+
+        function updateSimulator() {
+            let amount = parseFloat(inputAmount.value) || 0;
+
+            const techFee = 0.05;
+            const authRate = 0.002;
+
+            let calcPinFee = techFee + (amount * authRate);
+            let calcElvFee = techFee;
+
+            pinFeeDisplay.textContent = calcPinFee.toFixed(2).replace('.', ',') + ' €';
+            elvFeeDisplay.textContent = calcElvFee.toFixed(2).replace('.', ',') + ' €';
+            elvRiskDisplay.textContent = amount.toFixed(2).replace('.', ',') + ' €';
+
+            // Reset classes
+            simPinBox.classList.remove('border-[#1ed79d]', 'border-gray-200');
+            simElvBox.classList.remove('border-[#1ed79d]', 'border-gray-200');
+            pinRecStatus.classList.remove('bg-[#e8fbf5]', 'text-[#0f6b4e]', 'bg-gray-100', 'text-gray-500');
+            elvRecStatus.classList.remove('bg-[#e8fbf5]', 'text-[#0f6b4e]', 'bg-gray-100', 'text-gray-500', 'text-[#032e23]', 'bg-[#e2e8e5]');
+
+            if (amount < 30) {
+                simElvBox.classList.add('border-[#1ed79d]');
+                simPinBox.classList.add('border-gray-200');
+
+                elvRecStatus.textContent = 'Kosteneffizient';
+                elvRecStatus.classList.add('bg-[#e8fbf5]', 'text-[#0f6b4e]');
+
+                pinRecStatus.textContent = 'Hohe Gebühren';
+                pinRecStatus.classList.add('bg-gray-100', 'text-gray-500');
+            } else {
+                simPinBox.classList.add('border-[#1ed79d]');
+                simElvBox.classList.add('border-gray-200');
+
+                pinRecStatus.textContent = 'Sicherste Wahl';
+                pinRecStatus.classList.add('bg-[#e8fbf5]', 'text-[#0f6b4e]');
+
+                elvRecStatus.textContent = 'Risikoreich';
+                elvRecStatus.classList.add('bg-[#e2e8e5]', 'text-[#032e23]');
+            }
+        }
+
+        inputAmount.addEventListener('input', updateSimulator);
+        updateSimulator();
+    </script>
+</body>
+</html>
